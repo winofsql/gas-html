@@ -1,7 +1,7 @@
 # gas-html
 
 ## メニュー
-```
+```js
 function myFunction() {
   
   Logger.log("こんにちは世界");
