@@ -65,8 +65,8 @@ function useClassRoomTest() {
 		course = courses[i];
 		var now = new Date();
 		GmailApp.sendEmail("メールアドレス",
-						"Classroom の id と名前",
-						course.id + " : " + course.name + " : " +now.toString()
+			"Classroom の id と名前",
+			course.id + " : " + course.name + " : " +now.toString()
 		);
 	}
 
