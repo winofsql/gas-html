@@ -1,4 +1,4 @@
-## 指定行クリア
+## 指定列クリア
 ```js
 function myFunction() {
   var spreadsheet = SpreadsheetApp.getActive();
