@@ -50,3 +50,26 @@ function createLinkDialog() {
 
 }
 ```
+
+## Classroom 利用
+```js
+// ************************************
+// 
+// ************************************
+function useClassRoomTest() {
+
+	var response = Classroom.Courses.list();
+	var courses = response.courses;
+	var course = "";
+	for (i = 0; i < courses.length; i++) {
+		course = courses[i];
+		var now = new Date();
+		GmailApp.sendEmail("メールアドレス",
+						"Classroom の id と名前",
+						course.id + " : " + course.name + " : " +now.toString()
+		);
+	}
+
+}
+
+```
