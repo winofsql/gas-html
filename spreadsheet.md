@@ -1,3 +1,12 @@
+## 指定行クリア
+```js
+function myFunction() {
+  var spreadsheet = SpreadsheetApp.getActive();
+  spreadsheet.getRange('A:A').activate();
+  spreadsheet.getActiveRangeList().clear({contentsOnly: true, skipFilteredRows: true});
+}
+```
+
 ## オートフィル1000行
 ```js
 function myFunction() {
