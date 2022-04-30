@@ -61,9 +61,9 @@ function getClassroomData() {
   // 現在のスプレッドシート
   var spreadsheet = SpreadsheetApp.getActive();
 
-  // **************************************************
+	// ************************************
   // 列クリア
-  // **************************************************
+	// ************************************
   spreadsheet.getRange('A:D').activate();
   spreadsheet.getActiveRangeList().clear({contentsOnly: true, commentsOnly: true, skipFilteredRows: true});
 
@@ -88,7 +88,9 @@ function getClassroomData() {
     targetRange = spreadsheet.getRange('B' + (row + 1));
     targetRange.setValue(json.courses[i].name);
 
+    // ************************************
     // トピック一覧
+    // ************************************
     jsonTopic = Classroom.Courses.Topics.list( json.courses[i].id );
     if ( jsonTopic.topic == null ) {
       row += 2;
