@@ -56,20 +56,60 @@ function createLinkDialog() {
 // ************************************
 // 
 // ************************************
-function useClassRoomTest() {
+function getClassroomData() {
 
-	var response = Classroom.Courses.list();
-	var courses = response.courses;
-	var course = "";
-	for (i = 0; i < courses.length; i++) {
-		course = courses[i];
-		var now = new Date();
-		GmailApp.sendEmail("メールアドレス",
-			"Classroom の id と名前",
-			course.id + " : " + course.name + " : " +now.toString()
-		);
-	}
+  // 現在のスプレッドシート
+  var spreadsheet = SpreadsheetApp.getActive();
+
+  // **************************************************
+  // 列クリア
+  // **************************************************
+  spreadsheet.getRange('A:D').activate();
+  spreadsheet.getActiveRangeList().clear({contentsOnly: true, commentsOnly: true, skipFilteredRows: true});
+
+  // Classroom 一覧  
+  var json = Classroom.Courses.list();
+
+  // Classroom 数
+  var cnt = json.courses.length;
+  
+  // トピック一覧用
+  var jsonTopic = null;
+
+  // セル用
+  var targetRange = null;
+
+  // 行
+  var row = 0;
+
+  for( var i = 0; i < cnt; i++ ) {
+    targetRange = spreadsheet.getRange('A' + (row + 1));
+    targetRange.setValue(json.courses[i].id);
+    targetRange = spreadsheet.getRange('B' + (row + 1));
+    targetRange.setValue(json.courses[i].name);
+
+    // トピック一覧
+    jsonTopic = Classroom.Courses.Topics.list( json.courses[i].id );
+    if ( jsonTopic.topic == null ) {
+      row += 2;
+    }
+    else {
+      try {
+        for ( var j = 0; j < jsonTopic.topic.length; j++ ) {
+          targetRange = spreadsheet.getRange('C' + (row + 1));
+          targetRange.setValue(jsonTopic.topic[j].topicId);
+          targetRange = spreadsheet.getRange('D' + (row + 1));
+          targetRange.setValue(jsonTopic.topic[j].name);
+          row++;
+        }
+      }
+      catch(e){
+      }
+
+      row++;
+    }     
+
+  }
 
 }
-
 ```
