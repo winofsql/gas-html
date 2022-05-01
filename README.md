@@ -61,7 +61,7 @@ function getClassroomData() {
   // 現在のスプレッドシート
   var spreadsheet = SpreadsheetApp.getActive();
 
-	// ************************************
+  // ************************************
   // 列クリア
 	// ************************************
   spreadsheet.getRange('A:D').activate();
