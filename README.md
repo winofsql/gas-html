@@ -63,7 +63,7 @@ function getClassroomData() {
 
   // ************************************
   // 列クリア
-	// ************************************
+  // ************************************
   spreadsheet.getRange('A:D').activate();
   spreadsheet.getActiveRangeList().clear({contentsOnly: true, commentsOnly: true, skipFilteredRows: true});
 
