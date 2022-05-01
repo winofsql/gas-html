@@ -91,8 +91,4 @@ function spreadsheetSet() {
     row ++;
   }  
 
-  // A-B をデータで自動幅調整
-  spreadsheet.getRange('A:B').activate();
-  spreadsheet.getActiveSheet().autoResizeColumns(1, 2);
-
 }
