@@ -25,3 +25,21 @@ function getSheetNames() {
   }
   
 }
+
+// *******************************************
+// シート名で参照したシートをスプレッドシート
+// にコピーして、名前を変更する
+// *******************************************
+function copySheet() {
+
+  var spreadsheet = SpreadsheetApp.getActive();
+  var baseSheet = spreadsheet.getSheetByName("ひな形");
+
+  var addSheet;
+
+  for(var i = 1; i<= 10; i++ ) {
+    addSheet = baseSheet.copyTo(spreadsheet);
+    addSheet.setName("シート" + i);
+  }
+
+}
